@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: commission-party-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements-deploy.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: commission_party

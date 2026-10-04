@@ -1,50 +1,32 @@
-# Welcome to your Expo app 👋
+# Mandi Khata
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Hindi commission-invoice app for managing parties, invoices, payments, and Google Drive/Sheets sync.
 
-## Get started
+## Project layout
 
-1. Install dependencies
+- `frontend/` — Expo / React Native mobile app
+- `backend/` — FastAPI API and Excel invoice import
+- `render.yaml` — Render backend service definition
+- `DEPLOYMENT.md` — Backend and Android APK deployment steps
+
+## Run the backend locally
+
+1. Create `backend/.env` with `MONGO_URL` and `DB_NAME`. Never commit this file.
+2. Install Python dependencies from `backend/requirements-deploy.txt`.
+3. Start the API from the `backend/` directory:
 
    ```bash
-   npm install
+   uvicorn server:app --reload
    ```
 
-2. Start the app
+## Run the mobile app
+
+1. Install dependencies from `frontend/`.
+2. Set `EXPO_PUBLIC_BACKEND_URL` to the backend URL (without `/api`).
+3. Start Expo from `frontend/`:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for Render and EAS APK build instructions. Keep MongoDB credentials and Google OAuth secrets out of source control.
